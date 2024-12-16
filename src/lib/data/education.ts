@@ -10,7 +10,7 @@ export const educationData: Education[] = [
 		endYear: 'Present'
 	},
 	{
-		school: "Mahavajiravudh Changwat Songkhla School",
+		school: 'Mahavajiravudh Changwat Songkhla School',
 		degree: 'Langauge of Arts',
 		field: 'English-Korean-Japanese',
 		startYear: 2019,
@@ -18,7 +18,7 @@ export const educationData: Education[] = [
 		achievements: [
 			'1st Place in Robotics Competition at IDE Online Openhouse 2022',
 			'Vice President of Comptuer MVSK Club',
-			'Head of E-Sport Tournament (Call of Duty Moblie) at MVSK Openhouse 2020',	
+			'Head of E-Sport Tournament (Call of Duty Moblie) at MVSK Openhouse 2020'
 		]
 	}
 ];
