@@ -1,33 +1,20 @@
 FROM node:22-alpine AS builder
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-
-# Set production environment for build
-ENV NODE_ENV=production
-
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-
-# Install ALL dependencies (including devDependencies)
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false 
-
+# COPY pnpm-lock.yaml package.json ./
 COPY . .
-
-RUN pnpm build
+# RUN npm install -g pnpm 
+RUN npm install
+RUN npm run build
 
 FROM node:22-alpine
-
-RUN apk add --no-cache tzdata
-
-ENV TZ=Asia/Bangkok
-ENV NODE_ENV=production
-
 WORKDIR /app
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+
+RUN apk add --no-cache tzdata
+ENV TZ=Asia/Bangkok
+ENV NODE_ENV=production
 
 EXPOSE 3000
 CMD ["node", "build"]
