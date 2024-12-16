@@ -1,0 +1,82 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-ExtraLight.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Semibold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Demibold.ttf') format('truetype');
+	font-weight: 650;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MiSans Latin';
+	src: url('/fonts/MiSansLatin-Heavy.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Set base font for the entire site */
+@layer base {
+	html {
+		font-family: 'MiSans Latin', system-ui, sans-serif;
+	}
+}
