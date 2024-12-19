@@ -14,6 +14,7 @@ export const educationData: Education[] = [
 			'Vice Head of ITCAMP20 at ITKMITL',
 			'Vice President of IT20'
 		],
+		logo: 'itkmitl.png',
 		endYear: 'Present'
 	},
 	{
@@ -22,6 +23,7 @@ export const educationData: Education[] = [
 		field: 'English-Korean-Japanese',
 		startYear: 2019,
 		endYear: 2022,
+		logo: 'mvsk.png',
 		achievements: [
 			'Grand Prize in Robotics Competition at IDE Online Openhouse 2022',
 			'President of Comptuer MVSK Club',
