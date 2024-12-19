@@ -1,7 +1,7 @@
 <!-- src/lib/components/education/EducationCard.svelte -->
 <script lang="ts">
 	import type { Education } from '$lib/types/education';
-	import { Calendar, Award } from 'lucide-svelte';
+	import { Calendar, Award, BookA } from 'lucide-svelte';
 
 	export let education: Education;
 </script>
@@ -27,10 +27,18 @@
 			</div>
 
 			<!-- Timeline -->
-			<div class="mb-4 flex items-center text-gray-600">
+			<div class="flex items-center text-gray-600">
 				<Calendar size={16} class="mr-2" />
 				<span>{education.startYear} - {education.endYear}</span>
 			</div>
+			
+			<!-- GPA -->
+			{#if education.gpa}
+				<div class="mb-4 flex items-center text-gray-600">
+					<BookA size={16} class="mr-2" />
+					<span>GPA: {education.gpa}</span>
+				</div>
+			{/if}
 
 			<!-- Achievements -->
 			{#if education.achievements && education.achievements.length > 0}

@@ -24,6 +24,7 @@ export const educationData: Education[] = [
 		startYear: 2019,
 		endYear: 2022,
 		logo: 'mvsk.png',
+		gpa: 3.33,
 		achievements: [
 			'Grand Prize in Robotics Competition at IDE Online Openhouse 2022',
 			'President of Comptuer MVSK Club',
