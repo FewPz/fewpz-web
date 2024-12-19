@@ -7,8 +7,8 @@ export const educationData: Education[] = [
 		field: 'Information Technology (Software Engineering)',
 		startYear: 2022,
 		achievements: [
-			'1st Runner-up in Huawei ICT Competition 2024-2025',
-			'Qualified in the naitonal round of Huawei ICT Competition 2024-2025',
+			'1st Runner-up National Round in Huawei ICT Competition 2024-2025',
+			'Qualified in the National Round of Huawei ICT Competition 2024-2025',
 			'Published Relationship of SMO ITKMITL 2566',
 			'Head of Pre-Programming 2566 at ITKMITL',
 			'Vice Head of ITCAMP20 at ITKMITL',
