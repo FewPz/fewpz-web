@@ -5,7 +5,7 @@
 	import { projectsData } from '$lib/data/projects';
 </script>
 
-<section id="projects" class="mb-16 scroll-mt-20">
+<section id="projects" class="scroll-mt-20">
 	<div class="rounded-lg bg-white p-8 shadow-sm">
 		<div class="mb-8 flex items-center space-x-3">
 			<Laptop size={24} class="text-primary" />

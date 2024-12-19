@@ -6,7 +6,14 @@ export const educationData: Education[] = [
 		degree: 'Bachelor of Science',
 		field: 'Information Technology (Software Engineering)',
 		startYear: 2022,
-		achievements: ['Published Relationship of SMO ITKMITL 2566', 'Vice President of IT20'],
+		achievements: [
+			'1st Runner-up in Huawei ICT Competition 2024-2025',
+			'Qualified in the naitonal round of Huawei ICT Competition 2024-2025',
+			'Published Relationship of SMO ITKMITL 2566',
+			'Head of Pre-Programming 2566 at ITKMITL',
+			'Vice Head of ITCAMP20 at ITKMITL',
+			'Vice President of IT20'
+		],
 		endYear: 'Present'
 	},
 	{
@@ -16,8 +23,8 @@ export const educationData: Education[] = [
 		startYear: 2019,
 		endYear: 2022,
 		achievements: [
-			'1st Place in Robotics Competition at IDE Online Openhouse 2022',
-			'Vice President of Comptuer MVSK Club',
+			'Grand Prize in Robotics Competition at IDE Online Openhouse 2022',
+			'President of Comptuer MVSK Club',
 			'Head of E-Sport Tournament (Call of Duty Moblie) at MVSK Openhouse 2020'
 		]
 	}
