@@ -8,7 +8,7 @@ export const educationData: Education[] = [
 		startYear: 2022,
 		achievements: [
 			'1st Runner-up in the National Round of Huawei ICT Competition 2024-2025',
-			'1st Runner-up in the Popular Vote at ITKMITL Openhouse 2023',
+			'1st Runner-up in the Popular Vote for Project at ITKMITL Openhouse 2023',
 			'Qualified for the National Round of Huawei ICT Competition 2024-2025',
 			'6th Place in the Preliminary Round of Huawei ICT Competition 2023-2024',
 			'Published Relationship of SMO ITKMITL 2023',
