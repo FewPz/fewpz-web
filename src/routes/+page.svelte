@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Github, Linkedin, Mail, Plus } from 'lucide-svelte';
+	import { Github, Linkedin, Mail } from 'lucide-svelte';
 	import { portfolioSections } from '$lib/data/sections';
 	import Header from '$lib/components/Header.svelte';
 	import EducationSection from '$lib/components/education/EducationSection.svelte';
@@ -11,129 +11,115 @@
 
 	gsap.registerPlugin(ScrollTrigger);
 
-	let stars = Array(100).fill(null);
+	// Pre-compute stars array for better performance
+	const stars = Array.from({ length: 100 }, () => ({
+		top: `${Math.random() * 100}%`,
+		left: `${Math.random() * 100}%`,
+		delay: `${Math.random() * 5}s`
+	}));
 
-	onMount(() => {
-		const tl = gsap.timeline();
+	// Split animations into separate functions
+	function setupHeaderAnimations() {
+		const tl = gsap.timeline({
+			defaults: { ease: 'power3.out' }
+		});
 
-		// Animate heading
 		tl.from('h1', {
 			y: -50,
 			opacity: 0,
-			duration: 1,
-			ease: 'power3.out'
-		});
+			duration: 0.8
+		})
+			.from(
+				'p',
+				{
+					y: 20,
+					opacity: 0,
+					duration: 0.8
+				},
+				'-=0.3'
+			)
+			.from(
+				'button, a',
+				{
+					scale: 0,
+					opacity: 0,
+					duration: 0.6,
+					stagger: 0.1
+				},
+				'-=0.3'
+			);
+		return tl;
+	}
 
-		// Animate paragraph
-		tl.from(
-			'p',
-			{
-				y: 20,
-				opacity: 0,
-				duration: 1,
-				ease: 'power3.out'
-			},
-			'-=0.5'
-		);
-
-		// Animate buttons and links
-		tl.from(
-			'button',
-			{
-				scale: 0,
-				opacity: 0,
-				duration: 0.8,
-				ease: 'back.out(1.7)'
-			},
-			'-=0.5'
-		);
-
-		tl.from(
-			'a',
-			{
-				opacity: 0,
-				y: 10,
-				stagger: 0.2,
-				duration: 0.6,
-				ease: 'power2.out'
-			},
-			'-=0.5'
-		);
-
-		// Stars twinkling
-		gsap.set('.animate-twinkle', {
-			opacity: 0,
-			scale: 0
-		});
-		gsap.to('.animate-twinkle', {
+	function setupStarAnimations() {
+		gsap.to('.star', {
 			scale: 1,
-			opacity: 1,
-			duration: 5,
-			stagger: 0.1,
-			ease: 'power1.inOut',
-			repeat: -1,
-			yoyo: true
-		});
-
-		// Scroll animations for sections
-		gsap.from('main > *', {
-			scrollTrigger: {
-				trigger: 'main',
-				start: 'top 80%', // Start when section is 80% into view
-				end: 'bottom 20%', // End when 20% of the section is out of view
-				toggleActions: 'play none none none'
+			opacity: 0.8,
+			duration: 3,
+			stagger: {
+				amount: 4,
+				from: 'random'
 			},
-			opacity: 0,
-			y: 50,
-			duration: 1,
-			stagger: 0.3,
-			ease: 'power3.out'
-		});
-
-		// Profile Picture Animation
-		gsap.from('.profile-picture', {
-			scale: 0,
-			opacity: 0,
-			duration: 1.5,
-			ease: 'elastic.out(1, 0.5)',
-			rotation: 360
-		});
-
-		// Glow effect animation
-		gsap.to('.profile-glow', {
-			opacity: 1,
-			scale: 1.2,
 			repeat: -1,
 			yoyo: true,
-			duration: 2,
-			ease: 'power2.inOut'
+			ease: 'power1.inOut'
+		});
+	}
+
+	function setupScrollAnimations() {
+		ScrollTrigger.batch('section', {
+			start: 'top 85%',
+			onEnter: (batch) =>
+				gsap.to(batch, {
+					opacity: 1,
+					y: 0,
+					stagger: 0.15,
+					overwrite: true
+				}),
+			onLeaveBack: (batch) =>
+				gsap.to(batch, {
+					opacity: 0,
+					y: 20,
+					overwrite: true
+				}),
+			once: false
+		});
+	}
+
+	onMount(() => {
+		requestAnimationFrame(() => {
+			setupHeaderAnimations();
+			setupStarAnimations();
+			setupScrollAnimations();
 		});
 	});
 </script>
 
 <div class="min-h-screen bg-gray-50">
-	<div class="relative bg-primary pb-12 pt-24">
-		<div class="absolute inset-0 overflow-hidden">
-			{#each stars as _, i}
+	<div class="relative bg-primary pb-8 pt-16 md:pb-12 md:pt-24">
+		<!-- Star background with reduced DOM elements -->
+		<div class="pointer-events-none absolute inset-0 overflow-hidden">
+			{#each stars as star}
 				<div
-					class="animate-twinkle absolute h-1 w-1 rounded-full bg-white/10"
-					style="top: {Math.random() * 100}%; left: {Math.random() *
-						100}%; animation-delay: {Math.random() * 5}s;"
+					class="star absolute h-1 w-1 rounded-full bg-white/10 opacity-0"
+					style="top: {star.top}; left: {star.left}; animation-delay: {star.delay};"
 				></div>
 			{/each}
 		</div>
 
 		<div class="relative mx-auto max-w-7xl px-4">
-			<div class="flex items-center justify-between gap-8">
-				<div>
-					<h1 class="mb-4 text-5xl font-bold text-white">I'm Peeranat Matsor (Few) 🚀</h1>
-					<p class="mb-8 max-w-3xl text-lg text-white">
+			<div class="flex flex-col md:flex-row md:items-center md:justify-between md:gap-8">
+				<div class="mb-8 md:mb-0">
+					<h1 class="mb-4 text-3xl font-bold text-white md:text-5xl">
+						I'm Peeranat Matsor (Few) 🚀
+					</h1>
+					<p class="mb-6 max-w-3xl text-base text-white md:text-lg">
 						Third-Year Information Technology Student with a Focus on Software Engineer at the
 						School of Information Technology, KMITL.
 					</p>
 					<div class="flex items-center gap-4">
 						<button
-							class="rounded bg-white px-6 py-2 font-semibold text-primary transition-colors hover:bg-slate-100"
+							class="rounded bg-white px-4 py-2 font-semibold text-primary transition-colors hover:bg-slate-100 md:px-6"
 							disabled
 						>
 							Resume
@@ -142,6 +128,7 @@
 							<a
 								href="https://github.com/FewPz"
 								class="text-white transition-colors hover:text-pink-300"
+								rel="noopener noreferrer"
 							>
 								<Github size={24} />
 							</a>
@@ -154,49 +141,50 @@
 							<a
 								href="https://www.linkedin.com/in/pfewpz/"
 								class="text-white transition-colors hover:text-pink-300"
+								rel="noopener noreferrer"
 							>
 								<Linkedin size={24} />
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="relative">
+				<div class="relative h-32 w-32 md:h-48 md:w-48">
 					<div
-						class="profile-glow absolute inset-0 rounded-full bg-gradient-to-r from-primary to-pink-500 opacity-0 blur-xl"
+						class="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-pink-500 opacity-0 blur-xl"
 					></div>
 					<img
 						src="/profile.jpg"
 						alt="Few's Profile"
-						class="profile-picture relative h-48 w-48 border-4 border-white object-cover shadow-lg"
+						class="relative h-full w-full border-4 border-white object-cover shadow-lg"
+						loading="eager"
 					/>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Main Content -->
 	<main class="mx-auto max-w-7xl px-4 py-8">
-		<!-- Section Contents -->
-		<EducationSection />
-		<ExperienceSection />
-		<ProjectSection />
+		<section class="translate-y-8 opacity-0">
+			<EducationSection />
+		</section>
+		<section class="translate-y-8 opacity-0">
+			<ExperienceSection />
+		</section>
+		<section class="translate-y-8 opacity-0">
+			<ProjectSection />
+		</section>
 	</main>
 </div>
 
 <style>
-	@keyframes twinkle {
-		0%,
-		100% {
-			opacity: 0.3;
-			transform: scale(0.5);
-		}
-		50% {
-			opacity: 1;
-			transform: scale(1.5);
-		}
+	/* Optimize animations with transform */
+	.star {
+		will-change: transform, opacity;
 	}
 
-	.animate-twinkle {
-		animation: twinkle 5s infinite ease-in-out;
+	@media (prefers-reduced-motion: reduce) {
+		.star {
+			animation: none;
+		}
 	}
 </style>
