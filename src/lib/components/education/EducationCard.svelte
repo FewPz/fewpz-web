@@ -31,7 +31,7 @@
 				<Calendar size={16} class="mr-2" />
 				<span>{education.startYear} - {education.endYear}</span>
 			</div>
-			
+
 			<!-- GPA -->
 			{#if education.gpa}
 				<div class="mb-4 flex items-center text-gray-600">
