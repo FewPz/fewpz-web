@@ -11,7 +11,7 @@ export const experienceData: Experience[] = [
 			'Smilekrub Network is a game development group specializing in creating custom game modes and plugins for Minecraft servers.',
 		responsibilities: [
 			'Develop and maintain custom game modes and plugins',
-			'Design and implement new gameplay features and mechanicss',
+			'Design and implement new gameplay features and mechanics',
 			'Work with Spigot, Paper, and CraftBukkit APIs to create server modifications',
 			'Handle NMS (Net.Minecraft.Server) implementations for custom server features',
 			'Monitor server performance and implement optimizations as needed'
