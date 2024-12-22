@@ -18,7 +18,6 @@
 		delay: `${Math.random() * 5}s`
 	}));
 
-	// Split animations into separate functions
 	function setupHeaderAnimations() {
 		const tl = gsap.timeline({
 			defaults: { ease: 'power3.out' }
@@ -34,7 +33,7 @@
 				{
 					y: 20,
 					opacity: 0,
-					duration: 0.8
+					duration: 1.0
 				},
 				'-=0.3'
 			)
@@ -67,30 +66,31 @@
 	}
 
 	function setupScrollAnimations() {
-		ScrollTrigger.batch('section', {
-			start: 'top 85%',
-			onEnter: (batch) =>
-				gsap.to(batch, {
-					opacity: 1,
-					y: 0,
-					stagger: 0.15,
-					overwrite: true
-				}),
-			onLeaveBack: (batch) =>
-				gsap.to(batch, {
-					opacity: 0,
-					y: 20,
-					overwrite: true
-				}),
-			once: false
+		const sections = document.querySelectorAll('section');
+
+		sections.forEach((section, index) => {
+			gsap.from(section, {
+				scrollTrigger: {
+					trigger: section,
+					start: 'top 80%', // Start animation when section is 80% into view
+					end: 'top 60%', // End animation when section is 60% into view
+					toggleActions: 'play none none none'
+				},
+				opacity: 0,
+				y: 20,
+				duration: 0.8 + index * 0.2, // Slight delay for each subsequent section
+				ease: 'power3.out'
+			});
 		});
 	}
 
 	onMount(() => {
 		requestAnimationFrame(() => {
-			setupHeaderAnimations();
-			setupStarAnimations();
-			setupScrollAnimations();
+			setTimeout(() => {
+				setupHeaderAnimations();
+				setupStarAnimations();
+				setupScrollAnimations();
+			}, 350);
 		});
 	});
 </script>
@@ -164,13 +164,13 @@
 	</div>
 
 	<main class="mx-auto max-w-7xl px-4 py-8">
-		<section class="translate-y-8 opacity-0">
+		<section>
 			<EducationSection />
 		</section>
-		<section class="translate-y-8 opacity-0">
+		<section>
 			<ExperienceSection />
 		</section>
-		<section class="translate-y-8 opacity-0">
+		<section>
 			<ProjectSection />
 		</section>
 	</main>
