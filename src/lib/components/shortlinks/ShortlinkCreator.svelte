@@ -239,13 +239,6 @@
 						{/if}
 					</div>
 				</div>
-
-				<div class="mt-4 text-center">
-					<a href="#" class="flex items-center justify-center gap-1 font-medium text-primary hover:underline">
-						<BarChart size={16} />
-						View Analytics
-					</a>
-				</div>
 			</div>
 		{/if}
 	</div>
