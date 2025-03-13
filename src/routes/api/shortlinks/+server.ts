@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 const shortlinkSchema = z.object({
   hypertext_reference_link: z.string().url({ message: "Invalid URL format" }),
-  slug_name: z.string().min(3, { message: "Shortlink name must be at least 3 characters long" }),
+  slug_name: z.string().min(3, { message: "Shortlink name must be at least 3 characters long" }).max(6, { message: "Shortlink name must be at most 6 characters long" }),
   note: z.string().optional()
 });
 
@@ -20,7 +20,10 @@ export const POST: RequestHandler = async ({ request }) => {
     const existingShortlink = await db
       .selectFrom('shortlink')
       .selectAll()
-      .where('slug_name', '=', slug_name)
+      .where((eb) => eb.or([
+        eb('slug_name', '=', slug_name),
+        eb('hypertext_reference_link', '=', hypertext_reference_link)
+      ]))
       .executeTakeFirst();
     if (existingShortlink) {
       return json({ 
