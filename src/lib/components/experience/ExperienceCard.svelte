@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { Experience } from '$lib/types/experience';
-	import { Calendar, MapPin, Briefcase } from 'lucide-svelte';
+	import { Calendar, MapPin } from 'lucide-svelte';
 
 	export let experience: Experience;
+	
+	// Toggle state to show/hide more details
+	let showDetails = false;
+
+	function toggleDetails() {
+		showDetails = !showDetails;
+	}
 </script>
 
 <div
@@ -12,7 +19,9 @@
 		<!-- Header -->
 		<div class="mb-4 flex items-start justify-between">
 			<div>
-				<h3 class="text-xl font-semibold text-gray-800">{experience.position}</h3>
+				<h3 class="text-xl font-semibold text-gray-800">
+					{experience.position}
+				</h3>
 				<div class="font-medium text-primary">{experience.company}</div>
 			</div>
 			{#if experience.companyLogo}
@@ -41,26 +50,37 @@
 			{experience.description}
 		</p>
 
-		<!-- Responsibilities -->
-		<div class="mb-4">
-			<h4 class="mb-2 font-medium text-gray-800">Key Responsibilities:</h4>
-			<ul class="list-inside list-disc space-y-1 text-gray-600">
-				{#each experience.responsibilities as responsibility}
-					<li>{responsibility}</li>
-				{/each}
-			</ul>
-		</div>
+		<!-- "Read more" Button -->
+		<button
+			class="rounded-md bg-primary px-4 py-2 text-white hover:bg-primary-dark focus:outline-none"
+			on:click={toggleDetails}
+		>
+			{showDetails ? 'Show less' : 'Read more'}
+		</button>
 
-		<!-- Technologies -->
-		<div>
-			<h4 class="mb-2 font-medium text-gray-800">Technologies:</h4>
-			<div class="flex flex-wrap gap-2">
-				{#each experience.technologies as tech}
-					<span class="rounded-full bg-orange-50 px-3 py-1 text-sm text-orange-600">
-						{tech}
-					</span>
-				{/each}
+		<!-- Hidden Details (toggle based on showDetails) -->
+		{#if showDetails}
+			<!-- Responsibilities -->
+			<div class="mt-6 mb-4">
+				<h4 class="mb-2 font-medium text-gray-800">Key Responsibilities:</h4>
+				<ul class="list-inside list-disc space-y-1 text-gray-600">
+					{#each experience.responsibilities as responsibility}
+						<li>{responsibility}</li>
+					{/each}
+				</ul>
 			</div>
-		</div>
+
+			<!-- Technologies -->
+			<div>
+				<h4 class="mb-2 font-medium text-gray-800">Technologies:</h4>
+				<div class="flex flex-wrap gap-2">
+					{#each experience.technologies as tech}
+						<span class="rounded-full bg-orange-50 px-3 py-1 text-sm text-orange-600">
+							{tech}
+						</span>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>

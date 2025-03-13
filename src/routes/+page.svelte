@@ -1,111 +1,12 @@
 <script lang="ts">
 	import { Github, Linkedin, Mail } from 'lucide-svelte';
-	import { portfolioSections } from '$lib/data/sections';
-	import Header from '$lib/components/Header.svelte';
 	import EducationSection from '$lib/components/education/EducationSection.svelte';
 	import ExperienceSection from '$lib/components/experience/ExperienceSection.svelte';
 	import ProjectSection from '$lib/components/project/ProjectSection.svelte';
-	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-	gsap.registerPlugin(ScrollTrigger);
-
-	// Pre-compute stars array for better performance
-	const stars = Array.from({ length: 100 }, () => ({
-		top: `${Math.random() * 100}%`,
-		left: `${Math.random() * 100}%`,
-		delay: `${Math.random() * 5}s`
-	}));
-
-	function setupHeaderAnimations() {
-		const tl = gsap.timeline({
-			defaults: { ease: 'power3.out' }
-		});
-
-		tl.from('h1', {
-			y: -50,
-			opacity: 0,
-			duration: 0.8
-		})
-			.from(
-				'p',
-				{
-					y: 20,
-					opacity: 0,
-					duration: 1.0
-				},
-				'-=0.3'
-			)
-			.from(
-				'button, a',
-				{
-					scale: 0,
-					opacity: 0,
-					duration: 0.6,
-					stagger: 0.1
-				},
-				'-=0.3'
-			);
-		return tl;
-	}
-
-	function setupStarAnimations() {
-		gsap.to('.star', {
-			scale: 1,
-			opacity: 0.8,
-			duration: 3,
-			stagger: {
-				amount: 4,
-				from: 'random'
-			},
-			repeat: -1,
-			yoyo: true,
-			ease: 'power1.inOut'
-		});
-	}
-
-	function setupScrollAnimations() {
-		const sections = document.querySelectorAll('section');
-
-		sections.forEach((section, index) => {
-			gsap.from(section, {
-				scrollTrigger: {
-					trigger: section,
-					start: 'top 80%', // Start animation when section is 80% into view
-					end: 'top 60%', // End animation when section is 60% into view
-					toggleActions: 'play none none none'
-				},
-				opacity: 0,
-				y: 20,
-				duration: 0.8 + index * 0.2, // Slight delay for each subsequent section
-				ease: 'power3.out'
-			});
-		});
-	}
-
-	onMount(() => {
-		requestAnimationFrame(() => {
-			setTimeout(() => {
-				setupHeaderAnimations();
-				setupStarAnimations();
-				setupScrollAnimations();
-			}, 350);
-		});
-	});
 </script>
 
 <div class="min-h-screen bg-gray-50">
 	<div class="relative bg-primary pb-8 pt-16 md:pb-12 md:pt-24">
-		<!-- Star background with reduced DOM elements -->
-		<div class="pointer-events-none absolute inset-0 overflow-hidden">
-			{#each stars as star}
-				<div
-					class="star absolute h-1 w-1 rounded-full bg-white/10 opacity-0"
-					style="top: {star.top}; left: {star.left}; animation-delay: {star.delay};"
-				></div>
-			{/each}
-		</div>
 
 		<div class="relative mx-auto max-w-7xl px-4">
 			<div class="flex flex-col md:flex-row md:items-center md:justify-between md:gap-8">
@@ -176,16 +77,3 @@
 		</section>
 	</main>
 </div>
-
-<style>
-	/* Optimize animations with transform */
-	.star {
-		will-change: transform, opacity;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.star {
-			animation: none;
-		}
-	}
-</style>

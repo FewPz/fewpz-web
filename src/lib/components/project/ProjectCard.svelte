@@ -13,6 +13,8 @@
 				return 'bg-yellow-50 text-yellow-600';
 			case 'Maintenance':
 				return 'bg-red-50 text-red-600';
+			case 'Disconnected':
+				return 'bg-gray-50 text-gray-600';
 		}
 	};
 </script>

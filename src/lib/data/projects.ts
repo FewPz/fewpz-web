@@ -7,7 +7,7 @@ export const projectsData: Project[] = [
 			"Developed a faculty-funded captive portal for ITKMITL Authentication Internet Services login using LDAP, designed for students, lecturers, and staff. Enhanced system performance by leveraging the SvelteKit framework with Server-Side Rendering (SSR). The system is actively used by users in the School of Information Technology at King Mongkut's Institute of Technology Ladkrabang",
 		role: 'Fullstack Software Developer and UX/UI Design',
 		demoUrl: 'https://portal.it.kmitl.ac.th/',
-		status: 'In Progress',
+		status: 'Completed',
 		technologies: ['SvelteKit', 'LDAP', 'Google Authencation', 'Fortigate']
 	},
 	{
@@ -38,5 +38,12 @@ export const projectsData: Project[] = [
 		status: 'Completed',
 		demoUrl: 'https://jlearn.it.kmitl.ac.th/',
 		technologies: ['JavaScript', 'TypeScript', 'Next.js', 'Express', 'Figma']
+	},
+	{
+		title: 'TA Mirai - Regis Online Teaching Assistant System',
+		description: "N/A",
+		role: 'Fullstack Software Developer',
+		status: 'Disconnected',
+		technologies: ['PHP', 'MySQL', 'LDAP', 'Django', 'Docker', 'Jenkins']
 	}
 ];

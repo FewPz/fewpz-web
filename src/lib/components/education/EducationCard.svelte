@@ -1,9 +1,13 @@
-<!-- src/lib/components/education/EducationCard.svelte -->
 <script lang="ts">
 	import type { Education } from '$lib/types/education';
 	import { Calendar, Award, BookA } from 'lucide-svelte';
 
 	export let education: Education;
+	let showMore = false;
+
+	function toggleShowMore() {
+		showMore = !showMore;
+	}
 </script>
 
 <div
@@ -25,34 +29,36 @@
 					/>
 				{/if}
 			</div>
-
-			<!-- Timeline -->
 			<div class="flex items-center text-gray-600">
 				<Calendar size={16} class="mr-2" />
 				<span>{education.startYear} - {education.endYear}</span>
 			</div>
-
-			<!-- GPA -->
-			{#if education.gpa}
-				<div class="mb-4 flex items-center text-gray-600">
-					<BookA size={16} class="mr-2" />
-					<span>GPA: {education.gpa}</span>
-				</div>
-			{/if}
-
-			<!-- Achievements -->
-			{#if education.achievements && education.achievements.length > 0}
-				<div class="mt-4">
-					<div class="mb-2 flex items-center text-gray-800">
-						<Award size={16} class="mr-2" />
-						<span class="font-medium">Key Achievements</span>
+			<button
+				class="mt-4 rounded-md bg-primary px-4 py-2 text-white hover:bg-primary-dark focus:outline-none"
+				on:click={toggleShowMore}
+			>
+				{showMore ? 'Show Less' : 'Read More'}
+			</button>
+			{#if showMore}
+				{#if education.gpa}
+					<div class="mt-4 flex items-center text-gray-600">
+						<BookA size={16} class="mr-2" />
+						<span>GPA: {education.gpa}</span>
 					</div>
-					<ul class="list-inside list-disc space-y-1 text-gray-600">
-						{#each education.achievements as achievement}
-							<li>{achievement}</li>
-						{/each}
-					</ul>
-				</div>
+				{/if}
+				{#if education.achievements && education.achievements.length > 0}
+					<div class="mt-4">
+						<div class="mb-2 flex items-center text-gray-800">
+							<Award size={16} class="mr-2" />
+							<span class="font-medium">Key Achievements</span>
+						</div>
+						<ul class="list-inside list-disc space-y-1 text-gray-600">
+							{#each education.achievements as achievement}
+								<li>{achievement}</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
 			{/if}
 		</div>
 	</div>
