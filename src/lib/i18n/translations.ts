@@ -88,7 +88,7 @@ export const installationSteps: InstallationStep[] = [
         "Select the HSHO.exe file and click Add"
       ]
     },
-    image: "/hsho/add-steam.png" 
+    image: "/hsho/add-steam.png"
   },
   {
     step: 5,
@@ -175,7 +175,11 @@ export const translations: Translations = {
         {
           "question": "หากขึ้นคำว่า CANNOT VERIFY YOUR STREAM ควรทำอย่างไร",
           "answer": "แนะนำให้ติดตั้งตัวเกมใหม่ อาจจะเพราะไฟล์ข้อมูลถูกดาวน์โหลดไม่ถูกต้อง"
-        }
+        },
+        {
+          "question": "หากขึ้นคำว่า error code = 0 ควรทำอย่างไร",
+          "answer": "ให้ลองวางทับไฟล์ใหม่ และกด patch game ใน niwarnneverdie.exe อีกครั้ง โดยไม่ต้องสน error ที่ขึ้นมา และเช็คให้มั่นใจว่ารันตัวเกม HSHO ที่เพิ่มเข้ามาในสตรีม ไม่ใช่ตัวเกมหลัก"
+        },
       ]
     }
   },
@@ -216,7 +220,7 @@ export const translations: Translations = {
         {
           question: "Why does my computer show that it has no Internet connection after closing the NND app or when the computer crashes?",
           answer: "Sometimes, closing the NND app or a computer crash can reset your network's proxy settings, causing your computer to lose its Internet connection. Here's how to fix it:\n1. Click Start, select Settings, then go to Network & Internet > Proxy\n2. Turn on Automatically detect settings\n3. Turn off Use a proxy server"
-        },        
+        },
         {
           "question": "Is there a chance of getting banned?",
           "answer": "There is no chance of being banned, because we don't communicate with the backend database in any way."
@@ -224,7 +228,11 @@ export const translations: Translations = {
         {
           "question": "What should I do if I get the message 'CANNOT VERIFY YOUR STREAM'?",
           "answer": "It is recommended to reinstall the game. The issue may be due to incorrect file downloads."
-        }
+        },
+        {
+          "question": "What should I do if I get the message 'error code = 0'?",
+          "answer": "Try overwriting the files with new ones, then click 'patch game' in niwarnneverdie.exe again without worrying about the error message. Also, make sure you're running the HSHO game that was added to Steam, not the main game."
+        },
       ]
     }
   }
