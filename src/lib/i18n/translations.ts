@@ -26,7 +26,7 @@ export const installationSteps: InstallationStep[] = [
     },
     subSteps: {
       th: [
-        "เข้าไปยังลิงก์ GitHub: https://github.com/kunseru/niwarnneverdies/tag/1.0.2",
+        "เข้าไปยังลิงก์ GitHub: https://github.com/kunseru/niwarnneverdies/releases/tag/1.0.2",
         "ดาวน์โหลดไฟล์ชื่อ NND.zip",
         "แตกไฟล์ (Extract) จะได้ 3 ไฟล์หลัก ได้แก่: niwarnnerverdies.exe, Engine, และ HSHO"
       ],
