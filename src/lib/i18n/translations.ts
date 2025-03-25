@@ -132,7 +132,7 @@ export const installationSteps: InstallationStep[] = [
 export const translations: Translations = {
   th: {
     header: {
-      title: "HSHO Wiki",
+      title: "HSHO Nerverdie Wiki",
       subtitle: "วิธีการติดตั้งและใช้งานโปรแกรม \"niwarnneverdies\" สำหรับเกม Home Sweet Home Online"
     },
     introduction: {
@@ -160,11 +160,28 @@ export const translations: Translations = {
         th: "ไทย",
         en: "อังกฤษ"
       }
+    },
+    faq: {
+      title: "คำถามที่พบบ่อย",
+      items: [
+        {
+          question: "ทำไมคอมพิวเตอร์ถึงแจ้งว่าไม่มีอินเทอร์เน็ตหลังจากปิดแอป NND หรือเมื่อเครื่องคอมพิวเตอร์ค้าง",
+          answer: "บางครั้งการปิดแอป NND หรือเมื่อเครื่องคอมพิวเตอร์ค้าง/ล่ม อาจทำให้ค่า Proxy ของเครือข่ายถูกตั้งค่าใหม่ จนทำให้คอมพิวเตอร์ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้ วิธีการแก้ไข \n1. คลิกที่ Start เลือก Settings แล้วไปที่ Network & Internet > Proxy\n2. เปิดการตั้งค่า Automatically detect settings เป็น ON\n3. ปิดการตั้งค่า Use a proxy server เป็น OFF"
+        },
+        {
+          "question": "จะมีโอกาสที่จะโดนแบนไหม",
+          "answer": "ไม่มีโอกาสที่จะโดนแบนเลย เพราะเราไม่ได้มีการติดต่อกับฐานข้อมูลแต่อย่างใด"
+        },
+        {
+          "question": "หากขึ้นคำว่า CANNOT VERIFY YOUR STREAM ควรทำอย่างไร",
+          "answer": "แนะนำให้ติดตั้งตัวเกมใหม่ อาจจะเพราะไฟล์ข้อมูลถูกดาวน์โหลดไม่ถูกต้อง"
+        }
+      ]
     }
   },
   en: {
     header: {
-      title: "HSHO Wiki",
+      title: "HSHO Nerverdie Wiki",
       subtitle: "How to install and use the \"niwarnneverdies\" program for Home Sweet Home Online"
     },
     introduction: {
@@ -192,6 +209,23 @@ export const translations: Translations = {
         th: "Thai",
         en: "English"
       }
+    },
+    faq: {
+      title: "FAQ",
+      items: [
+        {
+          question: "Why does my computer show that it has no Internet connection after closing the NND app or when the computer crashes?",
+          answer: "Sometimes, closing the NND app or a computer crash can reset your network's proxy settings, causing your computer to lose its Internet connection. Here's how to fix it:\n1. Click Start, select Settings, then go to Network & Internet > Proxy\n2. Turn on Automatically detect settings\n3. Turn off Use a proxy server"
+        },        
+        {
+          "question": "Is there a chance of getting banned?",
+          "answer": "There is no chance of being banned, because we don't communicate with the backend database in any way."
+        },
+        {
+          "question": "What should I do if I get the message 'CANNOT VERIFY YOUR STREAM'?",
+          "answer": "It is recommended to reinstall the game. The issue may be due to incorrect file downloads."
+        }
+      ]
     }
   }
 };

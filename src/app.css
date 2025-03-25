@@ -77,6 +77,6 @@
 /* Set base font for the entire site */
 @layer base {
 	html {
-		font-family: 'MiSans Latin', system-ui, sans-serif;
+		font-family: 'Bai Jamjuree', system-ui, sans-serif;
 	}
 }

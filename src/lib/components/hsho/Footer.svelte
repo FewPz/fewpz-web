@@ -7,7 +7,6 @@
 
 <footer class="mt-12 bg-gray-800 p-6 text-gray-300">
 	<div class="container mx-auto">
-		<p>{t.footer.copyright}</p>
-		<p class="mt-2">{t.footer.developer}</p>
+		<p>Made 🔥 by Kunseru, _paper, FewPz</p>
 	</div>
 </footer>

@@ -37,6 +37,13 @@ export interface Translation {
     title: string;
     items: string[];
   };
+  faq: {
+    title: string;
+    items: {
+      question: string;
+      answer: string;
+    }[];
+  };
   footer: {
     copyright: string;
     developer: string;

@@ -12,7 +12,7 @@ export default {
 				primary: '#fa872d'
 			},
 			fontFamily: {
-				sans: ['MiSans Latin', 'system-ui', 'sans-serif']
+				sans: ['MiSans Thai', 'system-ui', 'sans-serif']
 			},
 			fontWeight: {
 				thin: '100',
@@ -32,8 +32,8 @@ export default {
 		},
 		keyframes: {
 			fadeIn: {
-				'0%': { opacity: 0 },
-				'100%': { opacity: 1 }
+				'0%': { opacity: '0' },
+				'100%': { opacity: '1' }
 			}
 		}
 	},
