@@ -231,7 +231,7 @@ export const translations: Translations = {
         },
         {
           "question": "What should I do if I get the message 'error code = 0'?",
-          "answer": "Try overwriting the files with new ones, then click 'patch game' in niwarnneverdie.exe again without worrying about the error message. Also, make sure you're running the HSHO game that was added to Steam, not the main game."
+          "answer": "Try to overwriting the files again, then click 'patch game' in niwarnneverdie.exe without worrying about the error (E002 or else). Also, make sure you're running the HSHO that was added to Steam Library, not Home Sweet Home: Online."
         },
       ]
     }
